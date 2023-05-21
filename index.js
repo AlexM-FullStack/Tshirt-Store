@@ -2,6 +2,7 @@ import shopProductsData from "./products.js"
 
 const shopEl = document.getElementById('shop')
 const cartAmount = document.querySelector('.cartAmount')
+const cartEl = document.querySelector('.cart')
 
 function generateShopContent(){
     return shopEl.innerHTML = shopProductsData.map(product => {
@@ -38,16 +39,33 @@ shopProductsData.forEach(product => {
     increaseBtn.addEventListener('click', ()=> {
         quantityEl.innerText ++
         cartAmount.innerText ++
+        updateCartInLocalStorage(id, quantityEl.innerText)
     })
 
     decreaseBtn.addEventListener('click', () => {
         if (quantityEl.innerText > 0) {
             quantityEl.innerText --
             cartAmount.innerText --
-        }
-       
+            updateCartInLocalStorage(id, quantityEl.innerText)
+        }   
     })
 })
+
+function updateCartInLocalStorage(productId, quantity) {
+    const cart = getCartFromLocalStorage()
+    cart[productId] = parseInt(quantity)
+    localStorage.setItem('cart', JSON.stringify(cart))
+}
+
+function getCartFromLocalStorage() {
+    const cart = localStorage.getItem('cart')
+    return cart ? JSON.parse(cart) : {}
+}
+
+cartEl.addEventListener('click', () => {
+    window.location.href = 'cart.html'
+})
+
 
 
 // modal offer popup

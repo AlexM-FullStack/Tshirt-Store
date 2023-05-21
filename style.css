@@ -24,6 +24,13 @@ body {
     padding: 3px 5px;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 1s ease-in-out;
+}
+
+.navbar .cart:hover {
+    background-color: #001233;
+    color: #ffffff;
+    transform: scale(1.2);
 }
 
 .cart i {
@@ -63,8 +70,7 @@ body {
 }
 
 .item:hover {
-    transform: scale(1.1);
-    
+    transform: scale(1.1);   
 }
 
 .details {
