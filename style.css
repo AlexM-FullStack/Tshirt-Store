@@ -59,6 +59,12 @@ body {
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 2px gray, -2px -2px 2px gray;
+    transition: all 1s ease-in-out;
+}
+
+.item:hover {
+    transform: scale(1.1);
+    
 }
 
 .details {
